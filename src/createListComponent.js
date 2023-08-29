@@ -381,11 +381,6 @@ export default function createListComponent({
             WebkitOverflowScrolling: 'touch',
             willChange: 'transform',
             direction,
-            transform: reversed
-              ? isHorizontal
-                ? REVERSE_HORIZONTAL_MATRIX
-                : REVERSE_VERTICAL_MATRIX
-              : '',
             ...style,
           },
         },
@@ -396,6 +391,11 @@ export default function createListComponent({
             height: isHorizontal ? '100%' : estimatedTotalSize,
             pointerEvents: isScrolling ? 'none' : undefined,
             width: isHorizontal ? estimatedTotalSize : '100%',
+            transform: reversed
+              ? isHorizontal
+                ? REVERSE_HORIZONTAL_MATRIX
+                : REVERSE_VERTICAL_MATRIX
+              : '',
           },
         })
       );
@@ -507,6 +507,7 @@ export default function createListComponent({
           top: !isHorizontal ? offset : 0,
           height: !isHorizontal ? size : '100%',
           width: isHorizontal ? size : '100%',
+          transform: '',
         };
         if (reversed) {
           style.transform = isHorizontal
